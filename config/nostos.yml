@@ -1,0 +1,13 @@
+test:
+
+development:
+  sources: ['Source::Illiad']
+  targets: ['Target::Voyager']
+  mapping:
+    'Source::Illiad': 'Target::Voyager'
+
+production:
+  sources: ['Source::Illiad']
+  targets: ['Target::Voyager']
+  mapping:
+    'Source::Illiad': 'Target::Voyager'

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  source_id: MyString
+  source_type: MyString
+  target_id: MyString
+  target_type: MyString
+
+two:
+  source_id: MyString
+  source_type: MyString
+  target_id: MyString
+  target_type: MyString
