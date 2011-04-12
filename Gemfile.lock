@@ -1,18 +1,3 @@
-GIT
-  remote: https://github.com/bricestacey/activerecord-illiad-adapter
-  revision: cd8a6dcedaea23642bcb467404784f6f15e1f442
-  specs:
-    activerecord-illiad-adapter (0.0.1)
-      activerecord
-      activerecord-sqlserver-adapter
-      tiny_tds
-
-GIT
-  remote: https://github.com/bricestacey/voyager-sip
-  revision: aa98a313e516a00277785add0d0002de8258e29b
-  specs:
-    voyager-sip (0.0.1)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -39,6 +24,10 @@ GEM
       activesupport (= 3.0.6)
       arel (~> 2.0.2)
       tzinfo (~> 0.3.23)
+    activerecord-illiad-adapter (0.0.1)
+      activerecord
+      activerecord-sqlserver-adapter
+      tiny_tds
     activerecord-sqlserver-adapter (3.0.12)
       activerecord (~> 3.0.3)
       arel (~> 2.0.7)
@@ -57,6 +46,10 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
+    nostos-source-illiad (0.0.1)
+      activerecord-illiad-adapter
+    nostos-target-voyager (0.0.1)
+      voyager-sip
     polyglot (0.3.1)
     rack (1.2.2)
     rack-mount (0.6.14)
@@ -83,12 +76,13 @@ GEM
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.26)
+    voyager-sip (0.0.1)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  activerecord-illiad-adapter!
+  nostos-source-illiad
+  nostos-target-voyager
   rails (= 3.0.6)
   sqlite3
-  voyager-sip!

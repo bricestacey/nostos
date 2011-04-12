@@ -9,3 +9,5 @@ doc/
 .DS_Store
 config/source_*.yml
 config/target_*.yml
+config/source_*.rb
+config/target_*.rb

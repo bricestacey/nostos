@@ -6,43 +6,17 @@ Nostos was originally developed to integrate a library's interlibary loan system
 
 ## Configuration
 
-Nostos currently ships with an Illiad source driver and a Voyager target driver. These must be configured or replaced with alternate drivers.
+Nostos does not ship with any particular source or target drivers. They must be installed individually and according to your needs.
 
-### Configure Illiad source driver
+### Source Drivers
 
-Install and configure FreeTDS for your system.
+* [Illiad](https://github.com/bricestacey/nostos-source-illiad)
 
-Create a file `config/source_illiad.yml` as below. Replace `environment` with the appropriate environment: test, development, or production. Then fill in the other attributes. `dataserver` is the name for your server as defined in freetds.conf. `number_of_days_old_transactions` is how many days you want to poll into the past. This number must be greater than how often you run Nostos in order to stay synchronized. I recommend 2-3 days at most.
+### Target Drivers
 
-    environment:
-      number_of_days_old_transactions: 2
-      db:
-        adapter:  "sqlserver"
-        dataserver:
-        host:     
-        dsn:      
-        username: 
-        password:
-        database:
+* [Voyager](https://github.com/bricestacey/nostos-target-voyager)
 
-### Configure Voyager target driver
-
-Create a file `config/target_voyager.yml` as below. Replace `environment` with the appropriate environment: test, development, or production. Then fill in the other attributes. Note that `username` and `location` is the operator id and location code used to sign into the SIP server (or Circulation module). `operator` is the operator id used for creating items. Theoretically they should be identical, however it is not required.
-
-    environment:
-      sip:
-        host: 
-        port:
-        username:
-        password:
-        operator:
-        location:
-
-For more information on how to configure your Voyager system for SIP see the manual _Voyager 7.2 Interface to Self Check Modules Using 3M SIP User's Guide, November 2009_
-
-### Configure Nostos
-
-Create a file `config/nostos.yml` as below. Currently, Nostos ships with an Illiad source driver and a Voyager target driver and is configured for that. The below configuration is for the production environment. `sources` should be an Array of sources. `targets` should be an Array of targets. `mapping` should contain key:value pairs corresponding to source:targets respectively.
+Create a file `config/nostos.yml` as below. The below configuration is for the production environment. `sources` should be an Array of sources. `targets` should be an Array of targets. `mapping` should contain key:value pairs corresponding to source:targets respectively.
 
     production:
       sources: ['Source::Illiad']
@@ -85,13 +59,6 @@ Target drivers must implement the following:
 * Accessors: `id, `title`, `due_date`, `charged?`
 * `self.find(id)`: returns a Target object corresponding to `id`
 * `self.create(source_object)`: creates a transaction in the target system and returns the item. If the item already exists, do not create, but still return the item.
-
-# See Also
-
-These are some other gems I've developed that are used for the Illiad and Voyager drivers.
-
-* [activerecord-illiad-adapter](https://github.com/bricestacey/activerecord-illiad-adapter) - For connecting with Illiad SQLServer database.
-* [voyager-sip](https://github.com/bricestacey/voyager-sip) - For connecting with Voyager via SIP.
 
 # Author
 
