@@ -53,4 +53,21 @@ class Transaction < ActiveRecord::Base
       end
     end.compact
   end
+
+  def self.sync!
+    TARGETS.each do |target|
+      target.charged.each do |charged|
+        transaction = Transaction.find_by_target_id(charged.id.to_s)
+        if transaction
+          source = transaction.source
+          if source
+            unless source.charged?
+              puts "charging #{source}"
+              source.charge!
+            end
+          end
+        end
+      end
+    end
+  end
 end

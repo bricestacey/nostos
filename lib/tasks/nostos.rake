@@ -10,5 +10,6 @@ namespace :nostos do
   task :cron => :environment do
     Transaction.poll_sources!
     Transaction.send_to_targets!
+    Transaction.sync!
   end
 end
