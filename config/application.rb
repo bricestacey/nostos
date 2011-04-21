@@ -38,9 +38,5 @@ module Nostos
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
-
-    logger = Logger.new(STDOUT)
-    logger.level = Logger::DEBUG
-    Rails.logger = Rails.application.config.logger = logger
   end
 end
