@@ -38,7 +38,8 @@ In general, you should use `nostos:cron` to automate your system. However, there
 
 * `nostos:poll_sources` - polls sources for new transactions.
 * `nostos:send_to_targets` - sends transactions to their target system.
-* `nostos:cron` - polls then sends.
+* `nostos:sync` - syncs circulation systems. Treats the target system as the canonical circ system.
+* `nostos:cron` - polls, sends, and syncs all in one.
 
 ## Writing Drivers
 
